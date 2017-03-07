@@ -4,8 +4,8 @@ dependencies:
   override:
     #- mvn liquibase:update
     #- mvn clean package
-    - mvn dependency:resolve
-    - mvn verify
+#    - mvn dependency:resolve
+#    - mvn verify
     - mvn package
 #deployment:
 #  develop:
