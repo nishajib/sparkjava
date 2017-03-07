@@ -27,4 +27,4 @@ deployment:
   prod:
     branch: master
     commands:
-      - aws s3 sync target/hellodocker-1.0-SNAPSHOT.jar s3://circleci-upload/ --delete
+      - aws s3 sync target/sparkexample-jar-with-dependencies.jar  s3://circleci-upload/ --delete
