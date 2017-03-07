@@ -6,7 +6,7 @@ dependencies:
     #- mvn clean package
 #    - mvn dependency:resolve
 #    - mvn verify
-    - mvn package
+    - mvn clean package
 #deployment:
 #  develop:
 #    branch: master
