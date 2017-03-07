@@ -1,0 +1,33 @@
+machine:
+  maven:
+    version: 3.3.9
+dependencies:
+#  pre:
+ #   - aws s3 cp s3://circleci-upload/application.properties /src/main/resources/
+  override:
+    #- mvn liquibase:update
+    #- mvn clean package
+    - mvn dependency:resolve
+    - mvn verify
+    - mvn package
+#deployment:
+#  develop:
+#    branch: master
+#    codedeploy:
+#      toku-p:
+#        application_root: /
+#        region: ap-southeast-1
+#        revision_location:
+#          revision_type: S3
+#          s3_location:
+#            bucket: circleci-upload
+#            key_pattern: toku-p-{BRANCH}-{SHORT_COMMIT}
+#        deployment_group: earthcar_tokup_api_dg
+#        deployment_config: CodeDeployDefault.OneAtATime
+#    # commands:
+#    #   - aws s3 cp target/tokup-0.0.1-SNAPSHOT.jar s3://circleci-upload/
+deployment:
+  prod:
+    branch: master
+    commands:
+      - aws s3 sync target/sparkexample-jar-with-dependencies.jar s3://circleci-upload/ --delete
